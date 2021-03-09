@@ -13,7 +13,7 @@ pipeline{
 		}
 		stage("Run Test"){
 			steps{
-				bat "docker-compose up testng"
+				bat "docker-compose up lolita"
 			}
 		}
 	}
