@@ -8,7 +8,7 @@ pipeline{
 		}
 		stage("Run Test"){
 			steps{
-				bat "docker-compose up lolita"
+				bat "docker-compose up googleModule"
 			}
 		}
 		stage("Stop Grid"){
