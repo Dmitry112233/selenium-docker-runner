@@ -16,8 +16,10 @@ services:
     depends_on:
       - hub
     environment:
+      - BROWSER=firefox
       - HUB_HOST=hub
-  lolita:
+      - MODULE=testng.xml
+  googleModule:
     image: dmitrys73/selenium-docker
     depends_on:
       - chrome
@@ -26,3 +28,5 @@ services:
       - BROWSER=chrome
       - HUB_HOST=hub
       - MODULE=testng.xml
+    volumes:
+      - ./test-results1:/usr/share/udemy/test-output
