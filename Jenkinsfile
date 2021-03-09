@@ -1,11 +1,6 @@
 pipeline{
 	agent any
 	stages{
-		stage("Pull Latest Image"){
-			steps{
-				bat "docker pull dmitrys73/selenium-docker"
-			}
-		}
 		stage("Start Grid"){
 			steps{
 				bat "docker-compose up -d hub chrome firefox"
@@ -16,12 +11,10 @@ pipeline{
 				bat "docker-compose up lolita"
 			}
 		}
-	}
-	post{
-		always{
-			archiveArtifacts artifacts: 'output/**'
-			bat "docker-compose down"
-			bat "sudo rm -rf output/"
+		stage("Stop Grid"){
+			steps{
+				bat "docker-compose down"
+			}
 		}
 	}
 }
