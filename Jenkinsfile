@@ -11,10 +11,11 @@ pipeline{
 				bat "docker-compose up googleModule"
 			}
 		}
-		stage("Stop Grid"){
-			steps{
-				bat "docker-compose down"
-			}
+	}
+	post{
+		always{
+			archiveArtifacts artifacts: 'output/**'
+			bat "docker-compose down"
 		}
 	}
 }
